@@ -35,6 +35,16 @@
       100% { opacity: 0.3; }
     }
 
+    .flicker {
+      animation: flicker 1.2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0%   { opacity: 1; }
+      50%  { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -69,6 +79,8 @@
       /_______________________\__________\  
           ||     ||     ||          ||       
               ||     ||     ||          ||           
+      </pre>
+      <pre class="flicker">
        .(
       /%/\
      (%(%))
@@ -99,4 +111,5 @@
   </script>
 </body>
 </html>
+
 
