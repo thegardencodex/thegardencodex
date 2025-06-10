@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Gate</title>
+  <style>
+    body {
+      background-color: black;
+      color: #08dc08;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding-top: 60px;
+    }
+    #gate {
+      cursor: pointer;
+      white-space: pre;
+      transition: opacity 0.3s ease;
+    }
+    #gate:hover {
+      opacity: 0.8;
+    }
+    .open-animation {
+      animation: openGate 2s forwards;
+    }
+    @keyframes openGate {
+      0% { opacity: 1; transform: scaleY(1); }
+      100% { opacity: 0; transform: scaleY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>[ Knock the Gate ]</h2>
+
+  <pre id="gate" onclick="knock()">
+  ██████████████████████
+  █░░░░░░░░░░░░░░░░░░░░█
+  █░░░░░░░░░░░░░░░░░░░░█
+  █░░░░  ▒▒▒▒▒  ░░░░░░░█
+  █░░░░  ▒██▒▒  ░░░░░░░█
+  █░░░░  ▒▒▒▒▒  ░░░░░░░█
+  █░░░░░░░░░░░░░░░░░░░░█
+  ██████████████████████
+  </pre>
+
+  <audio id="knock-sound" src="audio/knock.mp3"></audio>
+  <audio id="gate-sound" src="audio/gate-open.mp3"></audio>
+
+  <script>
+    let knockCount = 0;
+    const knockSound = document.getElementById('knock-sound');
+    const gateSound = document.getElementById('gate-sound');
+    const gate = document.getElementById('gate');
+
+    function knock() {
+      knockCount++;
+      knockSound.currentTime = 0;
+      knockSound.play();
+
+      if (knockCount === 3) {
+        gate.classList.add('open-animation');
+        gateSound.play();
+        setTimeout(() => {
+          window.location.href = 'home.html';
+        }, 5000); // Wait 5 seconds before redirect
+      }
+    }
+  </script>
+
+</body>
+</html>

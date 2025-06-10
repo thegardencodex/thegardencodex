@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Still Beyond</title>
+  <style>
+    body {
+      background-color: black;
+      color: #08dc08;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .fade {
+      animation: fadeIn 3s ease-in-out infinite alternate;
+    }
+
+    .stars {
+      color: #b0d0ff;
+      animation: twinkle 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      0%   { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes twinkle {
+      0%   { opacity: 0.3; }
+      50%  { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .clickable {
+      font-size: 2em;
+      cursor: pointer;
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="clickable" onclick="revealStillness()" id="whatText"><strong>What?</strong></div>
+
+    <div id="content" style="display: none;">
+      <p class="fade">
+        Somehow, upon passing through the gate... there is only stillness.
+      </p>
+      <pre class="stars">
+         ✦        ✧       ✦      ✦        ✧
+             ✧             ✦           ✧      
+      </pre>
+      <pre>
+             /\           /\         /\         
+         /  \         /  \       /  \     
+         /    \__/\/\_/    \     /    \     
+       /                   \   /      \   
+      /         O           \ /        \  
+      /_______________________\__________\  
+          ||     ||     ||     ||     ||       
+              ||     ||     ||     ||     ||           
+       .(
+      /%/\
+     (%(%))
+    .-'..`-.
+    `-'.'`-' 
+      </pre>
+      <p class="fade">
+        You are at the edge of something. Or perhaps in the middle of nothing.
+      </p>
+    </div>
+  </div>
+
+  <audio id="ambientAudio" loop>
+    <source src="audio/ambient.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function revealStillness() {
+      document.getElementById('whatText').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      var audio = document.getElementById('ambientAudio');
+      audio.volume = 0.7;
+      audio.play().catch(error => {
+        console.error("Audio playback failed:", error);
+      });
+    }
+  </script>
+</body>
+</html>
