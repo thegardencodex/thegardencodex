@@ -2,24 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Still Beyond</title>
   <style>
-    
-        * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-    
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       background-color: black;
       color: #08dc08;
       font-family: 'Courier New', Courier, monospace;
-      white-space: pre;
-      margin: 0;
-      padding: 0;
       text-align: center;
+      white-space: pre;
       line-height: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .clickable {
+      font-size: 2rem;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      user-select: none;
     }
 
     .fade {
@@ -29,6 +45,10 @@
     .stars {
       color: #b0d0ff;
       animation: twinkle 5s ease-in-out infinite alternate;
+    }
+
+    .flicker {
+      animation: flicker 1.2s infinite alternate;
     }
 
     @keyframes fadeIn {
@@ -42,41 +62,33 @@
       100% { opacity: 0.3; }
     }
 
-    .flicker {
-      animation: flicker 1.2s infinite alternate;
-    }
-
     @keyframes flicker {
       0%   { opacity: 1; }
       50%  { opacity: 0.3; }
       100% { opacity: 1; }
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .clickable {
-      font-size: 2em;
-      cursor: pointer;
-      margin-top: 0;
+    /* Optional: Smoother layout on narrow screens */
+    pre {
+      overflow-x: auto;
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
+  <div class="container">
     <div class="clickable" onclick="revealStillness()" id="whatText"><strong>What?</strong></div>
 
     <div id="content" style="display: none;">
       <p class="fade">
         Somehow, upon passing through the gate... there is only stillness.
       </p>
+
       <pre class="stars">
          ✦        ✧       ✦      ✦        ✧
              ✧             ✦           ✧      
       </pre>
+
       <pre>
              /\           /\         /\         
          /  \         /  \    O  /  \     
@@ -87,6 +99,7 @@
           ||     ||     ||          ||       
               ||     ||     ||          ||           
       </pre>
+
       <pre class="flicker">
        .(
       /%/\
@@ -94,6 +107,7 @@
     .-'..`-.
     `-'.'`-' 
       </pre>
+
       <p class="fade">
         You are at the edge of something. Or perhaps in the middle of nothing.
       </p>
@@ -109,7 +123,7 @@
     function revealStillness() {
       document.getElementById('whatText').style.display = 'none';
       document.getElementById('content').style.display = 'block';
-      var audio = document.getElementById('ambientAudio');
+      const audio = document.getElementById('ambientAudio');
       audio.volume = 0.7;
       audio.play().catch(error => {
         console.error("Audio playback failed:", error);
@@ -118,5 +132,6 @@
   </script>
 </body>
 </html>
+
 
 
