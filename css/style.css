@@ -14,6 +14,7 @@ html, body {
   overflow-x: hidden;
   text-align: center;
   margin-top: 0 !important;
+  user-select: none; /* Disable selection site-wide */
 }
 
 /* ────────────── Layout Utilities ────────────── */
@@ -51,7 +52,6 @@ pre {
   font-size: 2rem;
   cursor: pointer;
   margin: 1rem 0;
-  user-select: none;
   transition: opacity 0.3s ease;
   text-align: center;
 }
@@ -69,6 +69,20 @@ pre {
   margin-bottom: 1.2rem;
 }
 
+/* ────────────── Hidden Text Reveal ────────────── */
+.secret {
+  color: black;
+  background-color: black;
+  user-select: text;
+  transition: background-color 0.4s ease;
+}
+
+.secret::selection {
+  background-color: #08dc08;
+  color: black;
+}
+
+/* ────────────── Visual & Animated Elements ────────────── */
 .stars {
   color: #b0d0ff;
   animation: twinkle 5s ease-in-out infinite alternate;
@@ -133,5 +147,66 @@ pre {
   #content p {
     font-size: 1.5rem;
   }
+}
+
+/* ────────────── ✧ Future Feature Utilities ✧ ────────────── */
+
+/* 1. ASCII Hover Glow (for cool subtle interaction) */
+.hover-glow:hover {
+  text-shadow: 0 0 12px #08dc08;
+  transition: text-shadow 0.3s ease;
+}
+
+/* 2. Hidden Link 'Door' (combine with .secret) */
+.hidden-link a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted #08dc08;
+}
+
+.hidden-link a:hover {
+  text-shadow: 0 0 8px #08dc08;
+  color: #08dc08;
+}
+
+/* 3. Glitch Text (flickering corruption effect) */
+.glitch {
+  animation: glitchFlicker 1.5s infinite;
+}
+
+@keyframes glitchFlicker {
+  0%, 100% { opacity: 1; transform: none; }
+  20% { opacity: 0.6; transform: translateX(-1px); }
+  40% { opacity: 0.8; transform: translateX(1px); }
+  60% { opacity: 0.5; transform: translateY(-1px); }
+  80% { opacity: 0.9; transform: translateY(1px); }
+}
+
+/* 4. Reveal on Click or Trigger (JS required later) */
+.reveal-hidden {
+  display: none;
+}
+
+.reveal-visible {
+  display: block;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* 5. Evolving Theme (class names for future transitions) */
+.theme-1bit {
+  background-color: #000;
+  color: #fff;
+}
+
+.theme-4color {
+  background-color: #202020;
+  color: #c0ffb0;
+}
+
+.theme-pixel {
+  background: url('/img/pixel-bg.png') repeat;
+  color: #ffffff;
+  image-rendering: pixelated;
+  font-family: 'Press Start 2P', monospace;
 }
 
