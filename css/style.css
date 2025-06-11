@@ -13,6 +13,7 @@ html, body {
   line-height: 1.2;
   white-space: pre-wrap;
   overflow-x: hidden;
+  text-align: center;
 }
 
 /* ────────────── Layout Utilities ────────────── */
@@ -29,7 +30,7 @@ html, body {
   justify-content: center;
 }
 
-/* ────────────── Typography & ASCII Formatting ────────────── */
+/* ────────────── Typography & ASCII ────────────── */
 .ascii {
   font-size: 4.5vw;
   white-space: pre;
@@ -41,6 +42,33 @@ html, body {
   text-shadow: 0 0 6px #08dc08;
 }
 
+pre {
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+/* ────────────── Components ────────────── */
+.clickable {
+  font-size: 1.8em;
+  cursor: pointer;
+  margin: 1rem 0;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.clickable:hover {
+  opacity: 0.7;
+}
+
+#content {
+  padding-top: 1rem;
+}
+
+.stars {
+  color: #b0d0ff;
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+
 .fade {
   animation: fadeIn 3s ease-in-out infinite alternate;
 }
@@ -49,43 +77,30 @@ html, body {
   animation: flicker 1.2s infinite alternate;
 }
 
-/* ────────────── Components ────────────── */
-.clickable {
-  font-size: 1.8em;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: opacity 0.3s ease;
-}
-
-.clickable:hover {
-  opacity: 0.7;
-}
-
-.stars {
-  color: #b0d0ff;
-  animation: twinkle 5s ease-in-out infinite alternate;
+.open-animation {
+  animation: openGate 2s forwards;
 }
 
 /* ────────────── Animations ────────────── */
 @keyframes fadeIn {
-  0%   { opacity: 0.4; }
+  0% { opacity: 0.4; }
   100% { opacity: 1; }
 }
 
 @keyframes flicker {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.3; }
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
   100% { opacity: 1; }
 }
 
 @keyframes twinkle {
-  0%   { opacity: 0.3; }
-  50%  { opacity: 1; }
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
   100% { opacity: 0.3; }
 }
 
 @keyframes openGate {
-  0%   { opacity: 1; transform: scaleY(1); }
+  0% { opacity: 1; transform: scaleY(1); }
   100% { opacity: 0; transform: scaleY(0); }
 }
 
@@ -111,50 +126,3 @@ html, body {
   }
 }
 
-/* Home page specific styles */
-.clickable {
-  font-size: 2rem;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-  user-select: none;
-}
-
-#content {
-  padding-top: 1rem;
-}
-
-.fade {
-  animation: fadeIn 3s ease-in-out infinite alternate;
-}
-
-.flicker {
-  animation: flicker 1.2s infinite alternate;
-}
-
-.stars {
-  color: #b0d0ff;
-  animation: twinkle 5s ease-in-out infinite alternate;
-}
-
-/* Clean up <pre> scrollbars */
-pre {
-  white-space: pre-wrap;
-  overflow: hidden;
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0.4; }
-  100% { opacity: 1; }
-}
-
-@keyframes twinkle {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
-}
-
-@keyframes flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
-}
