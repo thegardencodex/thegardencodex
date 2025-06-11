@@ -1,82 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Still Beyond</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      background-color: black;
-      color: #08dc08;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
-      white-space: pre;
-      line-height: 1;
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      padding: 2rem 1rem;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .clickable {
-      font-size: 2rem;
-      cursor: pointer;
-      margin-bottom: 1.5rem;
-      user-select: none;
-    }
-
-    .fade {
-      animation: fadeIn 3s ease-in-out infinite alternate;
-    }
-
-    .stars {
-      color: #b0d0ff;
-      animation: twinkle 5s ease-in-out infinite alternate;
-    }
-
-    .flicker {
-      animation: flicker 1.2s infinite alternate;
-    }
-
-    @keyframes fadeIn {
-      0%   { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes twinkle {
-      0%   { opacity: 0.3; }
-      50%  { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-
-    @keyframes flicker {
-      0%   { opacity: 1; }
-      50%  { opacity: 0.3; }
-      100% { opacity: 1; }
-    }
-
-    /* Optional: Smoother layout on narrow screens */
-    pre {
-      overflow-x: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="container">
+
     <div class="clickable" onclick="revealStillness()" id="whatText"><strong>What?</strong></div>
 
     <div id="content" style="display: none;">
@@ -115,7 +47,7 @@
   </div>
 
   <audio id="ambientAudio" loop>
-    <source src="audio/ambient.mp3" type="audio/mpeg">
+    <source src="audio/ambient.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
@@ -125,9 +57,7 @@
       document.getElementById('content').style.display = 'block';
       const audio = document.getElementById('ambientAudio');
       audio.volume = 0.7;
-      audio.play().catch(error => {
-        console.error("Audio playback failed:", error);
-      });
+      audio.play().catch(err => console.error("Audio playback failed:", err));
     }
   </script>
 </body>
