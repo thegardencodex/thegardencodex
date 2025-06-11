@@ -18,7 +18,7 @@ html, body {
 
 /* ────────────── Layout Utilities ────────────── */
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -32,9 +32,9 @@ html, body {
 
 /* ────────────── Typography & ASCII ────────────── */
 .ascii {
-  font-size: 4.5vw;
+  font-size: 2.5vw;
   white-space: pre;
-  line-height: 1;
+  line-height: 1.1;
   text-align: center;
 }
 
@@ -68,12 +68,17 @@ pre {
   padding-top: 1rem;
 }
 
+#content p {
+  margin-bottom: 1.2rem;
+}
+
 .stars {
   color: #b0d0ff;
   animation: twinkle 5s ease-in-out infinite alternate;
 }
 
 .fade {
+  font-size: 1.2rem;
   animation: fadeIn 3s ease-in-out infinite alternate;
 }
 
@@ -111,7 +116,7 @@ pre {
 /* ────────────── Responsive Breakpoints ────────────── */
 @media (min-width: 600px) {
   .ascii {
-    font-size: 3vw;
+    font-size: 1.8vw;
   }
 
   .clickable {
@@ -121,7 +126,7 @@ pre {
 
 @media (min-width: 1024px) {
   .ascii {
-    font-size: 1.6vw;
+    font-size: 1.2vw;
     line-height: 1.3;
   }
 
