@@ -1,60 +1,52 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>The Gate</title>
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      background-color: black;
-      color: #08dc08;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
-      padding-top: 60px;
-    }
-    #gate {
-      cursor: pointer;
-      white-space: pre;
-      transition: opacity 0.3s ease;
-    }
-    #gate:hover {
-      opacity: 0.8;
-    }
-    .open-animation {
-      animation: openGate 2s forwards;
-    }
     @keyframes openGate {
       0% { opacity: 1; transform: scaleY(1); }
       100% { opacity: 0; transform: scaleY(0); }
     }
-    .ascii-banner {
-      white-space: pre;
-      font-size: 12px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: #08dc08;
+
+    .open-animation {
+      animation: openGate 2s forwards;
     }
+      #gate {
+    cursor: pointer;
+    white-space: pre;
+    transition: opacity 0.3s ease;
+    user-select: none;
+  }
+
+  #gate:hover {
+    opacity: 0.8;
+  }
   </style>
 </head>
 <body>
+  <div class="container centered">
 
-  <pre class="ascii-banner">
+    <pre class="ascii text-glow">
 ░▀█▀░█▄█▒██▀░░░▄▀▒▒▄▀▄▒█▀▄░█▀▄▒██▀░█▄░█░░░▄▀▀░▄▀▄░█▀▄▒██▀░▀▄▀
 ░▒█▒▒█▒█░█▄▄▒░░▀▄█░█▀█░█▀▄▒█▄▀░█▄▄░█▒▀█▒░░▀▄▄░▀▄▀▒█▄▀░█▄▄░█▒█
-  </pre>
+    </pre>
 
-  <h2>[ Knock the Gate ]</h2>
+    <h2>[ Knock the Gate ]</h2>
 
-  <pre id="gate" onclick="knock()">
-  ██████████████████████
-  █░░░░░░░░░░░░░░░░░░░░█
-  █░░░░░░░░░░░░░░░░░░░░█
-  █░░░░░░  ▒▒▒▒▒  ░░░░░█
-  █░░░░░░  ▒██▒▒  ░░░░░█
-  █░░░░░░  ▒▒▒▒▒  ░░░░░█
-  █░░░░░░░░░░░░░░░░░░░░█
-  ██████████████████████
-  </pre>
+    <pre id="gate" class="ascii" onclick="knock()">
+██████████████████████
+█░░░░░░░░░░░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░█
+█░░░░░░  ▒▒▒▒▒  ░░░░░█
+█░░░░░░  ▒██▒▒  ░░░░░█
+█░░░░░░  ▒▒▒▒▒  ░░░░░█
+█░░░░░░░░░░░░░░░░░░░░█
+██████████████████████
+    </pre>
+
+  </div>
 
   <audio id="knock-sound" src="audio/knock.mp3"></audio>
   <audio id="gate-sound" src="audio/gate-open.mp3"></audio>
@@ -67,21 +59,25 @@
 
     function knock() {
       knockCount++;
-      knockSound.currentTime = 0;
-      knockSound.play();
 
-      if (knockCount === 3) {
-        gate.classList.add('open-animation');
-        gateSound.play();
+      if (knockCount < 3) {
+        knockSound.currentTime = 0;
+        knockSound.play();
+      } else if (knockCount === 3) {
+        // Play knock + gate open sound
+        knockSound.currentTime = 0;
+        knockSound.play();
+        setTimeout(() => {
+          gateSound.currentTime = 0;
+          gateSound.play();
+          gate.classList.add('open-animation');
+        }, 300); // Slight delay for effect
+
         setTimeout(() => {
           window.location.href = 'home.html';
-        }, 5000); // Wait 5 seconds before redirect
+        }, 5000);
       }
     }
   </script>
-</body>
-</html>
-
-
 </body>
 </html>
