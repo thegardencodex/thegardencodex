@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Gate</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/ascii.css">
   <style>
     @keyframes openGate {
       0% { opacity: 1; transform: scaleY(1); }
@@ -26,6 +28,7 @@
   </style>
 </head>
 <body>
+  <div id="fade-overlay"></div>
   <div class="container centered">
 
     <pre class="ascii text-glow">
@@ -35,7 +38,7 @@
 
     <h2>[ Knock the Gate ]</h2>
 
-    <pre id="gate" class="ascii" onclick="knock()">
+    <pre id="gate" class="ascii crt" onclick="knock()">
 ██████████████████████
 █░░░░░░░░░░░░░░░░░░░░█
 █░░░░░░░░░░░░░░░░░░░░█
@@ -73,11 +76,22 @@
           gate.classList.add('open-animation');
         }, 300); // Slight delay for effect
 
-        setTimeout(() => {
-          window.location.href = 'home.html';
-        }, 5000);
+setTimeout(() => {
+  // Trigger fade back to black before leaving
+  const fade = document.getElementById('fade-overlay');
+  fade.style.animation = 'fadeIn 2s ease forwards';
+}, 4000); // Start fade a second before redirect
+
+setTimeout(() => {
+  window.location.href = 'home.html';
+}, 6000); // Wait for fade to complete
+
       }
     }
+  </script>
+</body>
+</html>
+
   </script>
 </body>
 </html>
