@@ -1,0 +1,239 @@
+/* ==================== base.css ==================== */
+
+/* ────────────── Base Reset & Globals ────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: black;
+  color: #08dc08;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  line-height: 1.3;
+  overflow-x: hidden;
+  text-align: center;
+  margin-top: 0 !important;
+  user-select: none;
+}
+
+/* ────────────── Layout Utilities ────────────── */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ────────────── General Typography ────────────── */
+pre {
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+/* ────────────── Components ────────────── */
+.clickable {
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.clickable:hover {
+  opacity: 0.7;
+}
+
+#content {
+  padding-top: 1rem;
+}
+
+#content p {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ────────────── Hidden Text Reveal ────────────── */
+.secret {
+  color: black;
+  background-color: black;
+  user-select: text;
+  transition: background-color 0.4s ease;
+}
+
+.secret::selection {
+  background-color: #08dc08;
+  color: black;
+}
+
+/* ────────────── Visual & Animated Elements ────────────── */
+.stars {
+  color: #08dc08;
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+.fade {
+  animation: fadeIn 3s ease-in-out infinite alternate;
+}
+
+.flicker {
+  animation: flicker 1.2s infinite alternate;
+}
+
+.open-animation {
+  animation: openGate 2s forwards;
+}
+
+/* ────────────── Animations ────────────── */
+@keyframes fadeIn {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes openGate {
+  0% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0); }
+}
+
+/* ────────────── Responsive Breakpoints ────────────── */
+@media (min-width: 600px) {
+  .clickable {
+    font-size: 2.2em;
+  }
+
+  #content p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 2rem;
+  }
+
+  #content p {
+    font-size: 1.5rem;
+  }
+}
+
+/* ────────────── ✧ Utility & Theme Placeholders ────────────── */
+.hover-glow:hover {
+  text-shadow: 0 0 12px #08dc08;
+  transition: text-shadow 0.3s ease;
+}
+
+.hidden-link a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted #08dc08;
+}
+
+.hidden-link a:hover {
+  text-shadow: 0 0 8px #08dc08;
+  color: #08dc08;
+}
+
+.glitch {
+  animation: glitchFlicker 1.5s infinite;
+}
+
+@keyframes glitchFlicker {
+  0%, 100% { opacity: 1; transform: none; }
+  20% { opacity: 0.6; transform: translateX(-1px); }
+  40% { opacity: 0.8; transform: translateX(1px); }
+  60% { opacity: 0.5; transform: translateY(-1px); }
+  80% { opacity: 0.9; transform: translateY(1px); }
+}
+
+.reveal-hidden {
+  display: none;
+}
+
+.reveal-visible {
+  display: block;
+  animation: fadeIn 1s ease forwards;
+}
+
+.theme-1bit {
+  background-color: #000;
+  color: #fff;
+}
+
+.theme-4color {
+  background-color: #202020;
+  color: #c0ffb0;
+}
+
+.theme-pixel {
+  background: url('/img/pixel-bg.png') repeat;
+  color: #ffffff;
+  image-rendering: pixelated;
+  font-family: 'Press Start 2P', monospace;
+}
+
+#fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  animation: fadeOut 3s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.crt {
+  position: relative;
+  color: #08dc08;
+  text-shadow: 0 0 1px #08dc08, 0 0 2px #08dc08;
+  animation: crtFlicker 1.2s infinite alternate;
+}
+
+.crt::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+

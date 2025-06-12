@@ -1,0 +1,24 @@
+/* ==================== ascii.css ==================== */
+
+.ascii {
+  font-size: 2.2vw;
+  white-space: pre;
+  line-height: 1.1;
+}
+
+.text-glow {
+  text-shadow: 0 0 6px #08dc08;
+}
+
+@media (min-width: 600px) {
+  .ascii {
+    font-size: 1.8vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ascii {
+    font-size: 1.4vw;
+    line-height: 1.2;
+  }
+}
